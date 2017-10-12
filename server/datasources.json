@@ -1,0 +1,15 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "sqlserver": {
+    "host": "197.234.193.237",
+    "port": 1433,
+    "database": "GoRhino_APP",
+    "password": "gor_app_123%%",
+    "name": "sqlserver",
+    "user": "GOR_APP",
+    "connector": "mssql"
+  }
+}
