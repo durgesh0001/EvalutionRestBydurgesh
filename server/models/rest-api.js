@@ -14,6 +14,7 @@ var activeMember = require('../api/activeMember');
 var partnerRedeemQuestions = require('../api/partnerRedeemQuestions');
 var partnerRedeemWrite = require('../api/partnerRedeemWrite');
 var getSubCategory = require('../api/getSubCategory');
+var postReview = require('../api/postReview');
 var Log = require('../api/log');
 module.exports = function (Restapi) {
   var ds = app.dataSources.sqlserver;
@@ -163,6 +164,17 @@ activeMember.remoteMethod(Restapi);
     partnerRedeemWrite.partnerRedeemWrite(ds,MemberID,PartnerID,QuestionID,AnswerValue,CorrectAnswer,cb);
   };
   partnerRedeemWrite.remoteMethod(Restapi);
+
+    /*
+@mathod partnerRedeemWrite
+@description  write partner redeem
+@param MemberID,PartnerID,QuestionID,AnswerValue,CorrectAnswer
+*/
+    Restapi.postReview = function (PartnerID,MembershipId,comment,Overall,Taste,Value,Ambience,Quality,Service,cb) {
+        postReview.postReview(ds,PartnerID,MembershipId,comment,Overall,Taste,Value,Ambience,Quality,Service,cb);
+    };
+    postReview.remoteMethod(Restapi);
+
   /*
 @mathod partnerRedeemWrite
 @description  write partner redeem
