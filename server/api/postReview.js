@@ -1,5 +1,7 @@
 'use strict'
 exports.postReview = function (ds,PartnerID,MembershipId,comment,Overall,Taste,Value,Ambience,Quality,Service,cb) {
+    comment = comment.toString();
+
     var sql = "DECLARE @return_value int\n" +
         "\n" +
         "EXEC @return_value = [dbo].[REST_sp_PostReview]\n" +
