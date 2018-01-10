@@ -1,7 +1,6 @@
 'use strict'
 exports.postReview = function (ds,PartnerID,MembershipId,comment,Overall,Taste,Value,Ambience,Quality,Service,cb) {
-    // comment = '"'+comment+'"';
-    comment = String(comment);
+    comment = '"'+comment+'"';
 
     var sql = "DECLARE @return_value int\n" +
         "\n" +
