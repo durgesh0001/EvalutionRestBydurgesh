@@ -1,7 +1,9 @@
 'use strict'
 exports.createNewSalesLead = function (ds,Firstname,Surname,MobileNo,cb) {
+    Firstname = '"'+Firstname+'"';
+    Surname = '"'+Surname+'"';
 
-  var sql = "DECLARE\t@return_value int\n" +
+    var sql = "DECLARE\t@return_value int\n" +
     "\n" +
     "EXEC\t@return_value = [dbo].[REST_sp_CreateNewSalesLead]\n" +
     "\t\t@Firstname = "+Firstname+",\n" +
