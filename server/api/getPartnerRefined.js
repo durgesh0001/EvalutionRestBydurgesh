@@ -1,13 +1,14 @@
 'use strict'
 exports.getPartnerRefined = function (ds,Long,Lat,MasterCat,FilterString,Radius,Partner,cb) {
-  if(Partner)
+  console.log('Param:---', Long,Lat,MasterCat,FilterString,Radius,Partner)
+  if(Partner != undefined || Partner != 'undefined')
   {
-      //Partner = Partner.toString();
+      Partner = '"'+Partner+'"';
 
   }
-    if(FilterString)
+    if(FilterString != undefined || FilterString != 'undefined')
     {
-        //FilterString = FilterString.toString();
+        FilterString = '"'+FilterString+'"';
 
     }
   var sql = "DECLARE\t@return_value int\n" +
@@ -42,7 +43,7 @@ exports.remoteMethod = function (Restapi) {
         {arg: 'Long',type:'number',required:true},
         {arg: 'Lat',type:'number',required:true},
         {arg: 'MasterCat',type:'number',required:true},
-        {arg: 'FilterString',type:'string',required:false},
+        {arg: 'FilterString',type:'string',required:true},
         {arg: 'Radius',type:'number',required:true},
         {arg: 'Partner',type:'string',required:false},
       ],
