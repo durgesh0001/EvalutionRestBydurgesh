@@ -23,8 +23,8 @@ module.exports = function (Restapi) {
    @description  get partner near me
    @param Long,Lat,Radius
   */
-  Restapi.getPartnerNearMe = function (Long, Lat, Radius, cb) {
-    getPartnerList.getPartnerNearMe(ds, Long, Lat, Radius, cb);
+  Restapi.getPartnerNearMe = function (Long, Lat, Radius, CurrentPageNo,TotalRecord,RecordPerPage, cb) {
+    getPartnerList.getPartnerNearMe(ds, Long, Lat, Radius, CurrentPageNo,TotalRecord,RecordPerPage, cb);
   };
   getPartnerList.remoteMethod(Restapi);
 
