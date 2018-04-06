@@ -1,16 +1,21 @@
 'use strict'
 exports.getPartnerRefined = function (ds,Long,Lat,MasterCat,FilterString,Radius,Partner,cb) {
-  console.log('Param:---', Long,Lat,MasterCat,FilterString,Radius,Partner)
+
   if(Partner != undefined || Partner != 'undefined')
   {
       Partner = '"'+Partner+'"';
-
   }
-    if(FilterString != undefined || FilterString != 'undefined')
-    {
+  if(FilterString != undefined || FilterString != 'undefined')
+  {
         FilterString = '"'+FilterString+'"';
-
+  }
+  if(Partner == '"undefined"'){
+      Partner = null;
+  }
+    if(FilterString == '"undefined"'){
+        FilterString = null;
     }
+
   var sql = "DECLARE\t@return_value int\n" +
       "\n" +
       "EXEC\t@return_value = [dbo].[REST_sp_PartnerList_Refined]\n" +
@@ -22,7 +27,6 @@ exports.getPartnerRefined = function (ds,Long,Lat,MasterCat,FilterString,Radius,
       "\t\t@Partner = "+Partner+"\n" +
       "\n" +
       "SELECT\t'Return Value' = @return_value";
-
   ds.connector.query(sql, function (err, data) {
     if (err) {
       cb(null,{status:"0",message:"fail"});
