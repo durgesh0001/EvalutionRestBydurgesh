@@ -1,5 +1,5 @@
 'use strict'
-exports.getPartnerRefined = function (ds,Long,Lat,MasterCat,FilterString,Radius,Partner,cb) {
+exports.getPartnerRefined = function (ds,Long,Lat,MasterCat,FilterString,Radius,Partner,SortCol,cb) {
 
   if(Partner != undefined || Partner != 'undefined')
   {
@@ -9,13 +9,20 @@ exports.getPartnerRefined = function (ds,Long,Lat,MasterCat,FilterString,Radius,
   {
         FilterString = '"'+FilterString+'"';
   }
+  if(SortCol != undefined || SortCol != 'undefined')
+    {
+        SortCol = '"'+SortCol+'"';
+    }
   if(Partner == '"undefined"'){
       Partner = null;
   }
     if(FilterString == '"undefined"'){
         FilterString = null;
     }
-
+    if(SortCol == '"undefined"'){
+        SortCol = null;
+    }
+console.log(typeof SortCol, SortCol);
   var sql = "DECLARE\t@return_value int\n" +
       "\n" +
       "EXEC\t@return_value = [dbo].[REST_sp_PartnerList_Refined]\n" +
@@ -24,9 +31,11 @@ exports.getPartnerRefined = function (ds,Long,Lat,MasterCat,FilterString,Radius,
       "\t\t@MasterCat = "+MasterCat+",\n" +
       "\t\t@FilterString = "+FilterString+",\n" +
       "\t\t@Radius = "+Radius+",\n" +
-      "\t\t@Partner = "+Partner+"\n" +
+      "\t\t@Partner = "+Partner+",\n" +
+      "\t\t@SortCol = "+SortCol+"\n" +
       "\n" +
       "SELECT\t'Return Value' = @return_value";
+  console.log(sql);
   ds.connector.query(sql, function (err, data) {
     if (err) {
       cb(null,{status:"0",message:"fail"});
@@ -50,6 +59,7 @@ exports.remoteMethod = function (Restapi) {
         {arg: 'FilterString',type:'string',required:true},
         {arg: 'Radius',type:'number',required:true},
         {arg: 'Partner',type:'string',required:false},
+        {arg: 'SortCol',type:'string',required:false},
       ],
       returns: {arg: 'result', type: 'object'},
       http: {path: '/Partners/Refine', verb: 'post'}

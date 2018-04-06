@@ -99,8 +99,8 @@ module.exports = function (Restapi) {
  @description  get partner refined
  @param Long,Lat,MasterCat,FilterString
 */
-  Restapi.getPartnerRefined = function (Long, Lat, MasterCat, FilterString, Radius, Partner, cb) {
-    getPartnerRefined.getPartnerRefined(ds, Long, Lat, MasterCat, FilterString, Radius, Partner, cb);
+  Restapi.getPartnerRefined = function (Long, Lat, MasterCat, FilterString, Radius, Partner,SortCol, cb) {
+    getPartnerRefined.getPartnerRefined(ds, Long, Lat, MasterCat, FilterString, Radius, Partner,SortCol, cb);
   };
   getPartnerRefined.remoteMethod(Restapi);
 
