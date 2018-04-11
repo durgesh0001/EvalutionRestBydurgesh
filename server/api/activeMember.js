@@ -27,7 +27,7 @@ exports.activeMember = function (ds,MobileNo,OTP,cb) {
 
     			//cb(401,{status:"1",message:"user not found"});
     		}else if(data[0].CustomerNo != undefined){
-    			cb(null,{status:"2",message:"success", data: data});
+    			cb(null, data);
     		}else{
     			cb(null,{status:"0",message:"fail"});
     		}
