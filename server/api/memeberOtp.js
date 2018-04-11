@@ -4,7 +4,7 @@ exports.memeberOpt = function (ds, MobileNo, cb) {
   var sql = "DECLARE\t@return_value int\n" +
     "\n" +
     "EXEC\t@return_value = [dbo].[REST_sp_GetOTP]\n" +
-    "\t\t@MobileNo = " + MobileNo + "\n" +
+    "\t\t@MobileNo = '" + MobileNo + "'\n" +
     "\n" +
     "SELECT\t'Return Value' = @return_value";
 
