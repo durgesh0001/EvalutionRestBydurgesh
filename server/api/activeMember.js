@@ -10,11 +10,22 @@ exports.activeMember = function (ds,MobileNo,OTP,cb) {
   ds.connector.query(sql, function (err, data) {
     if (err) {
       cb(null,{status:"0",message:"fail"});
-
     }
     else
     {
-      cb(null, data);
+    	if(data[0] != undefined){
+    		if(data[0].CustomerNo != undefined && data[0].CustomerNo === 0){
+    			cb(null,{status:"0",message:"OTP does not match"});
+    		}else if(data[0].CustomerNo != undefined && data[0].CustomerNo === 1){
+    			cb(null,{status:"1",message:"user not found"});
+    		}else if(data[0].CustomerNo != undefined){
+    			cb(null,{status:"2",message:"success", data: data});
+    		}else{
+    			cb(null,{status:"0",message:"fail"});
+    		}
+    	}else{
+    		cb(null,{status:"0",message:"fail"});
+    	}
 
     }
   });
