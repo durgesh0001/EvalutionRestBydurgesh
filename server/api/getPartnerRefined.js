@@ -22,7 +22,6 @@ exports.getPartnerRefined = function (ds,Long,Lat,MasterCat,FilterString,Radius,
     if(SortCol == '"undefined"'){
         SortCol = null;
     }
-console.log(typeof SortCol, SortCol);
   var sql = "DECLARE\t@return_value int\n" +
       "\n" +
       "EXEC\t@return_value = [dbo].[REST_sp_PartnerList_Refined]\n" +
@@ -56,7 +55,7 @@ exports.remoteMethod = function (Restapi) {
         {arg: 'Long',type:'number',required:true},
         {arg: 'Lat',type:'number',required:true},
         {arg: 'MasterCat',type:'number',required:true},
-        {arg: 'FilterString',type:'string',required:true},
+        {arg: 'FilterString',type:'string',required:false},
         {arg: 'Radius',type:'number',required:true},
         {arg: 'Partner',type:'string',required:false},
         {arg: 'SortCol',type:'string',required:false},
