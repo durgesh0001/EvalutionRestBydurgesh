@@ -3,8 +3,8 @@ exports.activeMember = function (ds,MobileNo,OTP,cb) {
   var sql = "DECLARE\t@return_value int\n" +
     "\n" +
     "EXEC\t@return_value = [dbo].[REST_sp_ActivateMember]\n" +
-    "\t\t@MobileNo = "+MobileNo+",\n" +
-    "\t\t@OTP = "+OTP+"\n" +
+    "\t\t@MobileNo = '"+MobileNo+"',\n" +
+    "\t\t@OTP = '"+OTP+"'\n" +
     "\n" +
     "SELECT\t'Return Value' = @return_value";
   ds.connector.query(sql, function (err, data) {
