@@ -15,7 +15,7 @@ exports.activeMember = function (ds,MobileNo,OTP,cb) {
     }
     else
     {
-      cb(null, data);
+      cb(null, data[0]);
 
     }
   });
