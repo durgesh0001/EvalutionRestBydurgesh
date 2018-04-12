@@ -160,8 +160,8 @@ activeMember.remoteMethod(Restapi);
 @description  write partner redeem
 @param MemberID,PartnerID,QuestionID,AnswerValue,CorrectAnswer
 */
-  Restapi.partnerRedeemWrite = function (MemberID,PartnerID,QuestionID,AnswerValue,CorrectAnswer, cb) {
-    partnerRedeemWrite.partnerRedeemWrite(ds,MemberID,PartnerID,QuestionID,AnswerValue,CorrectAnswer,cb);
+  Restapi.partnerRedeemWrite = function (MemberID,PartnerID,QuestionID,AnswerValue,Lat,Lon, cb) {
+    partnerRedeemWrite.partnerRedeemWrite(ds,MemberID,PartnerID,QuestionID,AnswerValue,Lat,Lon,cb);
   };
   partnerRedeemWrite.remoteMethod(Restapi);
 
@@ -185,6 +185,3 @@ activeMember.remoteMethod(Restapi);
   };
   Log.remoteMethod(Restapi);
 };
-
-
-
