@@ -40,8 +40,9 @@ exports.remoteMethod = function (Restapi) {
         {arg: 'PartnerID', type: 'number',required:true},
         {arg: 'QuestionID', type: 'string',required:true},
         {arg: 'AnswerValue', type: 'string',required:true},
-        {arg: 'Lat', type: 'float',required:true},
-        {arg: 'Lon', type: 'float',required:true}
+        {arg: 'Lon', type: 'float',required:true},
+        {arg: 'Lat', type: 'float',required:true}
+
       ],
       returns: {arg: 'result', type: 'object'},
       http: {path: '/Redeem/Details', verb: 'post'}
